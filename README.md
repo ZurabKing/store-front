@@ -16,6 +16,8 @@ npm run dev
 
 - **ReactJS 18**
 - **TypeScript**
+- **MobX** (state manager)
+- **AntDesign** (ui библиотека)
 - **React Router v6** (навигация)
 - **React Hook Form** (валидация)
 - **React Hooks** (хуки)
