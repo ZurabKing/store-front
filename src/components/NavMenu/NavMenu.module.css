@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style-type: none;
+}
+
+.link {
+  color: black;
+}
+
+.modalContainer {
+  display: flex;
+  
+}
+
+.modal {
+  background-color: white;
+  z-index: 1;
+}

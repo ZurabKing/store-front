@@ -1,0 +1,1 @@
+export { ProductRegist } from "./ProductRegist";

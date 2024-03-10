@@ -1,13 +1,9 @@
 import { FC } from "react";
-import { Layout, Menu, theme } from "antd";
+import { Layout, theme } from "antd";
 import { Outlet } from "react-router-dom";
+import { Header } from "../components/Header";
 
-const { Header, Content } = Layout;
-
-const items = new Array(3).fill(null).map((_, index) => ({
-  key: index + 1,
-  label: `nav ${index + 1}`,
-}));
+const { Content } = Layout;
 
 export const MainLayout: FC = () => {
   const {
@@ -16,21 +12,12 @@ export const MainLayout: FC = () => {
 
   return (
     <Layout>
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-      </Header>
+      <Header />
       <Content style={{ padding: "0 48px" }}>
         <div
           style={{
             background: colorBgContainer,
-            minHeight: 280,
+            height: "calc(100vh - 160px)",
             padding: 24,
             borderRadius: borderRadiusLG,
           }}

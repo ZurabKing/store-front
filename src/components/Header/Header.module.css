@@ -1,0 +1,17 @@
+.header {
+  padding: 30px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoLink {
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logoImg {
+  font-size: 30px;
+}
