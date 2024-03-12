@@ -4,6 +4,7 @@ import { useStore } from "../../../hooks/useStore";
 
 import styles from "./Products.module.css";
 import { Posts } from "../../../@types/products";
+import cartStore from "../../../store/cart-store";
 
 export const Products: FC = observer(() => {
   const {
@@ -23,8 +24,10 @@ export const Products: FC = observer(() => {
     return <span>error...</span>;
   }
 
-  const handleAddToCart = (post: Posts) => {
-    addItem(post);
+  const handleAddToCart = (post: Posts, isInCart: boolean) => {
+    if (!isInCart) {
+      addItem(post);
+    }
   };
 
   return (
@@ -32,6 +35,7 @@ export const Products: FC = observer(() => {
       <h1 style={{ marginBottom: "30px" }}>Все товары</h1>
       <ul className={styles.list}>
         {posts?.value.map((post) => {
+          const isInCart = cartStore.isItemInCart(post);
           return (
             <li className={styles.item} key={post.id}>
               <img width={200} height={200} src={post.image} alt="" />
@@ -40,7 +44,16 @@ export const Products: FC = observer(() => {
                 <span>
                   <b>Цена:</b> ${post.price}
                 </span>
-                <button onClick={() => handleAddToCart(post)}>В корзину</button>
+                <button
+                  disabled={isInCart}
+                  onClick={() => handleAddToCart(post, isInCart)}
+                  style={{
+                    backgroundColor: isInCart ? "gray" : "blue",
+                    cursor: isInCart ? "not-allowed" : "pointer",
+                  }}
+                >
+                  В корзину
+                </button>
               </div>
             </li>
           );

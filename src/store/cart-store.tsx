@@ -6,15 +6,20 @@ class CartStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.addItem = this.addItem.bind(this);
+    this.items = [];
   }
 
   addItem(item: Posts) {
     this.items.push(item);
-    console.log(item);
   }
 
   getItems() {
     return this.items;
+  }
+
+  isItemInCart(item: Posts) {
+    return this.items.some((i) => i.id === item.id);
   }
 }
 
