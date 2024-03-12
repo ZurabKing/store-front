@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { useStore } from "../../hooks/useStore";
 
+import { Link } from "react-router-dom";
+
 import styles from "./Cart.module.css";
+import { BsArrowRight } from "react-icons/bs";
 
 export const Cart: FC = () => {
   const { cart } = useStore();
@@ -12,6 +15,8 @@ export const Cart: FC = () => {
 
   return (
     <div>
+      <h1 style={{ marginBottom: "30px" }}>Корзина</h1>
+
       <ul className={styles.list}>
         {cart.items?.map((item) => (
           <li className={styles.item} key={item.id}>
@@ -25,6 +30,12 @@ export const Cart: FC = () => {
           </li>
         ))}
       </ul>
+
+      <div className={styles.productContainer}>
+        <Link className={styles.productContainerLink} to={"/productregist"}>
+          Перейти на страницу оформления заказа <BsArrowRight />
+        </Link>
+      </div>
     </div>
   );
 };

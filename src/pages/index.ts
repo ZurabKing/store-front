@@ -6,4 +6,4 @@ export { Regist } from "./Auth/Regist";
 export { Electronics } from "./Category/Electronics";
 export { Jewelery } from "./Category/Jewelery";
 export { Products } from "./Category/AllProduct";
-
+export { Personal } from "./Personal";

@@ -43,18 +43,27 @@
   cursor: pointer;
 }
 
-.productContainer {
-  position: fixed;
-  bottom: 60px;
-}
-
-.productContainerLink {
+.sumContainer {
   display: flex;
   align-items: center;
-  gap: 7px;
-  transition: .3s all;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.productContainerLink:hover {
-  gap: 12px;
+.sumBtn {
+  padding: 5px 7px;
+  border: none;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: white;
+}
+
+.sumBtn:hover {
+  background-color: aqua;
+}
+
+.subtitle {
+  margin-bottom: 30px;
 }

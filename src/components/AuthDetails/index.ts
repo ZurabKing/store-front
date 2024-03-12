@@ -1,0 +1,1 @@
+export { AuthDetail } from "./AuthDetail";

@@ -1,21 +1,10 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 import { BiCart, BiUser } from "react-icons/bi";
-import { AuthDetail } from "../../pages/Auth/AuthDetails/AuthDetail";
 
 import styles from "./NavMenu.module.css";
 
 export const NavMenu: FC = () => {
-  const [modal, setModal] = useState(false);
-
-  const showModal = () => {
-    if (modal === false) {
-      setModal(true);
-    } else {
-      setModal(false);
-    }
-  };
-
   return (
     <ul className={styles.list}>
       <li>
@@ -34,15 +23,9 @@ export const NavMenu: FC = () => {
         </Link>
       </li>
       <li>
-        <div className={styles.modalContainer}></div>
-        <Link className={styles.link} to={"/auth"}>
-          <BiUser fontSize={"25px"} onClick={showModal} />
+        <Link className={styles.link} to={"/personal"}>
+          <BiUser fontSize={"25px"} />
         </Link>
-        {modal && (
-          <div className={styles.modal}>
-            <AuthDetail />
-          </div>
-        )}
       </li>
     </ul>
   );

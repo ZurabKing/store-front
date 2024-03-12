@@ -21,6 +21,10 @@ class CartStore {
   isItemInCart(item: Posts) {
     return this.items.some((i) => i.id === item.id);
   }
+
+  getTotalSum() {
+    return this.items.reduce((sum, item) => sum + item.price, 0);
+  }
 }
 
 export default new CartStore();

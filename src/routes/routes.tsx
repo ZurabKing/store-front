@@ -8,6 +8,7 @@ import {
   Home,
   Jewelery,
   Login,
+  Personal,
   Regist,
 } from "../pages";
 import { ProductRegist } from "../pages/ProductRegist";
@@ -26,6 +27,7 @@ export const AppRoutes: FC = () => {
           <Route path="category/menclothers" element={<MenClothers />} />
           <Route path="category/womenclothers" element={<WomenClothers />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/personal" element={<Personal />} />
           <Route path="/productregist" element={<ProductRegist />} />
           <Route path="*" element={<h1>Такой страницы не существует</h1>} />
         </Route>
