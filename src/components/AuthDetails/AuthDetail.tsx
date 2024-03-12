@@ -13,14 +13,13 @@ export const AuthDetail: FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user: IUser | null) => {
+    const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         const userData: IUser = {
           email: user.email || "",
         };
         navigate("/");
         setAuthUser(userData);
-        setAuthUser(user);
       } else {
         setAuthUser(null);
         navigate("/auth");
