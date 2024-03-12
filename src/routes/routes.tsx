@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+import { FC, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { MainLayout } from "../layouts";
 import {
   Cart,
@@ -14,8 +14,22 @@ import {
 import { ProductRegist } from "../pages/ProductRegist";
 import { MenClothers } from "../pages/Category/MenClothers";
 import { WomenClothers } from "../pages/Category/WomenClothers";
+import { auth } from "../firebase";
 
 export const AppRoutes: FC = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate("/auth");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [navigate]);
+
   return (
     <>
       <Routes>

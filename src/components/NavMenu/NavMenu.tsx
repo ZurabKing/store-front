@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BiCart, BiUser } from "react-icons/bi";
 
 import styles from "./NavMenu.module.css";
+import { AuthDetail } from "../AuthDetails";
 
 export const NavMenu: FC = () => {
   return (
@@ -22,10 +23,12 @@ export const NavMenu: FC = () => {
           <BiCart fontSize={"25px"} />
         </Link>
       </li>
-      <li>
+      <li style={{ display: "flex" }}>
         <Link className={styles.link} to={"/personal"}>
           <BiUser fontSize={"25px"} />
         </Link>
+        -
+        <AuthDetail />
       </li>
     </ul>
   );

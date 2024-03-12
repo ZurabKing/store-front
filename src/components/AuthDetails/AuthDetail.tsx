@@ -2,6 +2,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FC, useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
 
 interface IUser {
   email: string;
@@ -40,9 +41,14 @@ export const AuthDetail: FC = () => {
   return (
     <div>
       {authUser ? (
-        <div>
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
           <p>{authUser?.email}</p>
-          <button onClick={userSignOut}>Sign Out</button>
+          <button
+            style={{ display: "flex", cursor: "pointer" }}
+            onClick={userSignOut}
+          >
+            <FaSignOutAlt />
+          </button>
         </div>
       ) : null}
     </div>
