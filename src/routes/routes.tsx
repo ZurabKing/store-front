@@ -1,52 +1,36 @@
-import { FC, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
 import { MainLayout } from "../layouts";
 import {
   Cart,
   Category,
-  Electronics,
   Home,
-  Jewelery,
   Login,
   Personal,
+  Products,
   Regist,
 } from "../pages";
 import { ProductRegist } from "../pages/ProductRegist";
-import { MenClothers } from "../pages/Category/MenClothers";
-import { WomenClothers } from "../pages/Category/WomenClothers";
-import { auth } from "../firebase";
+import { Route as AppRoute } from "../constants/routes";
 
 export const AppRoutes: FC = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        navigate("/auth");
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate]);
-
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path={AppRoute.Home} element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="category" element={<Category />} />
-          <Route path="category/electronics" element={<Electronics />} />
-          <Route path="category/jewelery" element={<Jewelery />} />
-          <Route path="category/menclothers" element={<MenClothers />} />
-          <Route path="category/womenclothers" element={<WomenClothers />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/personal" element={<Personal />} />
-          <Route path="/productregist" element={<ProductRegist />} />
-          <Route path="*" element={<h1>Такой страницы не существует</h1>} />
+          <Route path={AppRoute.Categories} element={<Category />} />
+          <Route path={AppRoute.Category} element={<Products />} />
+          <Route path={AppRoute.Cart} element={<Cart />} />
+          <Route path={AppRoute.Personal} element={<Personal />} />
+          <Route path={AppRoute.ProductRegist} element={<ProductRegist />} />
+          <Route
+            path={AppRoute.Any}
+            element={<h1>Такой страницы не существует</h1>}
+          />
         </Route>
-        <Route path="/auth" element={<Login />} />
-        <Route path="/auth/regist" element={<Regist />} />
+        <Route path={AppRoute.Auth} element={<Login />} />
+        <Route path={AppRoute.Regist} element={<Regist />} />
       </Routes>
     </>
   );

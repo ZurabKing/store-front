@@ -1,1 +1,0 @@
-export { WomenClothers } from "./WomenClothers";

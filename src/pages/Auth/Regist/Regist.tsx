@@ -38,7 +38,7 @@ export const Regist: FC = () => {
   const [password, setPassword] = useState("");
   const [copyPassword, setCopyPassword] = useState("");
 
-  const register = (e: any) => {
+  const register = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (copyPassword !== password) {

@@ -2,19 +2,27 @@ import { FC, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../../hooks/useStore";
 
-import styles from "./Products.module.css";
 import { Posts } from "../../../@types/products";
 import cartStore from "../../../store/cart-store";
+import { useParams } from "react-router-dom";
+
+import styles from "./Products.module.css";
 
 export const Products: FC = observer(() => {
+  const { category } = useParams();
+
   const {
-    post: { getAllProducts, posts },
+    post: { getPosts, posts, getAllPosts },
     cart: { addItem },
   } = useStore();
 
   useEffect(() => {
-    getAllProducts();
-  }, []);
+    if (category) {
+      getPosts(category);
+    } else {
+      getAllPosts();
+    }
+  }, [category]);
 
   if (posts?.state === "pending") {
     return <span>Loading...</span>;
@@ -30,9 +38,21 @@ export const Products: FC = observer(() => {
     }
   };
 
+  const categoryNames: { [key: string]: string } = {
+    electronics: "Электроника",
+    jewelery: "Юверилные изделия",
+    "men's clothing": "Мужская одежда",
+    "women's clothing": "Женская одежда",
+  };
+
+  const categoryName =
+    category && categoryNames[category]
+      ? categoryNames[category]
+      : "Все товары";
+
   return (
     <>
-      <h1 style={{ marginBottom: "30px" }}>Все товары</h1>
+      <h1 style={{ marginBottom: "30px" }}>{categoryName}</h1>
       <ul className={styles.list}>
         {posts?.value.map((post) => {
           const isInCart = cartStore.isItemInCart(post);

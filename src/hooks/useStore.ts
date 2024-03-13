@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
-import RootStore from "../store/root-store";
+import { store } from "../store/root-store";
 
-export const RootStoreContext = createContext<RootStore | null>(null);
+export const RootStoreContext = createContext<typeof store | null>(null);
 
 export const useStore = () => {
   const context = useContext(RootStoreContext);

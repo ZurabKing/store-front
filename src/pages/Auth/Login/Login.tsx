@@ -13,7 +13,7 @@ export const Login: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = (e: any) => {
+  const login = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)

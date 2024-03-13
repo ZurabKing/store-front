@@ -8,4 +8,4 @@ class RootStore {
   productRegist = productRegistStore;
 }
 
-export default RootStore;
+export const store = new RootStore();
